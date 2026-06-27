@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Engineering Knowledge Map 2026–2027</title>
+  <style>
+:root{--green:#16692d;--orange:#f97316;--blue:#194aa8;--purple:#5b1b91;--teal:#0f6f7a;--navy:#0b2871;--ink:#0c2363;--line:#c8d4ea;--soft:#f8faff}
+*{box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;margin:0;background:#0b1220}
+.poster{max-width:1600px;margin:0 auto;background:#ffffff;padding:14px 18px 20px;color:var(--ink)}
+/* Top grid */
+.top-grid{display:grid;grid-template-columns:280px 1fr 170px;gap:16px;align-items:center}
+.legend-box{border:1.5px solid var(--line);border-radius:8px;padding:10px 14px}
+.legend-box h3{margin:0 0 6px;font-size:13px;font-weight:700}
+.lrow{display:flex;align-items:center;gap:6px;margin:4px 0;font-size:11px}
+.ldot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.focus-box{border:1.5px solid var(--line);border-radius:8px;padding:12px;text-align:center;font-weight:900;font-size:14px}
+/* Sections */
+.section-num{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;border-radius:5px;width:26px;height:26px;font-weight:900;font-size:13px;margin-right:6px}
+.row-grid{display:grid;grid-template-columns:105px 1fr;gap:10px;margin-top:10px;align-items:start}
+.side-label{font-size:11px;font-weight:700;text-align:center;padding-top:6px}
+.side-label p{font-size:9.5px;color:#53617f;margin:6px 0 0;font-weight:400}
+/* Flow */
+.flow-row{display:flex;align-items:center;gap:0;flex-wrap:nowrap;justify-content:space-between}
+.flow-card{border:1.5px solid var(--line);border-radius:8px;padding:8px 6px;text-align:center;cursor:pointer;transition:transform .15s;flex:1;max-width:120px}
+.flow-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.flow-card .ico{font-size:24px}
+.flow-card .name{font-size:9px;font-weight:700;margin-top:2px;letter-spacing:.3px}
+.flow-arrow{font-size:16px;font-weight:900;color:var(--ink);flex-shrink:0;padding:0 2px}
+/* Foundation */
+.found-row{display:grid;grid-template-columns:1.1fr 1.5fr 1fr;gap:10px}
+.found-card{border:1.5px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s}
+.found-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.found-head{padding:6px 10px;color:#fff;font-weight:700;font-size:11.5px;display:flex;align-items:center;gap:6px}
+.found-body{padding:8px 12px;font-size:10px;line-height:1.35;columns:2;column-gap:16px}
+.found-body ul{margin:0;padding-left:13px}
+.found-body li{margin:2px 0}
+/* Layers */
+.layer-row{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.layer-card{border:1.5px solid var(--line);border-radius:8px;overflow:hidden;min-height:210px;cursor:pointer;transition:transform .15s}
+.layer-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.layer-head{padding:5px 8px;color:#fff;font-weight:700;font-size:9.5px;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;min-height:32px}
+.priority-badge{display:inline-block;border-radius:4px;padding:3px 7px;font-weight:700;font-size:9px;color:#fff;margin-bottom:6px;white-space:nowrap}
+.badge-must{background:var(--green)}
+.badge-should{background:var(--orange)}
+.badge-nice{background:var(--blue)}
+.layer-body{padding:6px 8px;font-size:9px;line-height:1.25;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.layer-body.col2{grid-template-columns:1fr 1fr}
+.layer-body.col1{grid-template-columns:1fr}
+.layer-section{display:flex;flex-direction:column}
+.layer-section .priority-badge{display:block;margin-bottom:5px}
+.layer-body ul{margin:0;padding-left:11px}
+.layer-body li{margin:2px 0}
+.must{color:var(--green);font-weight:700}.should{color:var(--orange);font-weight:700}.nice{color:var(--blue);font-weight:700}
+/* Engineering */
+.eng-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.eng-card{border:1.5px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s}
+.eng-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.eng-head{padding:5px 8px;color:#fff;font-weight:700;font-size:10px;text-align:center;min-height:32px;display:flex;align-items:center;justify-content:center}
+.eng-body{padding:6px 8px;font-size:9.5px;line-height:1.3}
+.eng-body ul{margin:0;padding-left:12px}
+.eng-body li{margin:1.5px 0}
+/* Path */
+.path-row{display:flex;align-items:stretch;gap:4px;overflow-x:auto;padding-bottom:8px}
+.path-card{border:1.5px solid var(--line);border-radius:6px;padding:5px 6px;font-size:8px;position:relative;flex-shrink:0;min-width:85px;max-width:85px}
+.path-card b{font-size:7.5px;color:var(--ink);line-height:1.1}
+.path-card ul{margin:2px 0 0;padding-left:10px;display:none}
+.path-card li{margin:0.5px 0}
+.path-arrow{display:none}
+/* Interactive */
+.interactive-section{background:#0f172a;padding:16px;margin-top:12px;border-radius:8px;max-width:1600px;margin-left:auto;margin-right:auto}
+.progress-fill{transition:width .4s ease}
+.section-content{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.section-content.open{max-height:8000px}
+.chevron-icon{transition:transform .3s ease}
+.section-open .chevron-icon{transform:rotate(180deg)}
+@media(max-width:900px){.top-grid,.flow-row,.found-row,.layer-row,.eng-row,.path-row,.row-grid{display:grid;grid-template-columns:1fr}.flow-arrow,.path-arrow{display:none}}
+
+/* Responsive refinements for standalone use */
+@media (max-width: 1100px){
+  .poster{padding:14px 14px 18px}
+  .top-grid{grid-template-columns:240px 1fr 150px;gap:12px}
+  h1[data-template-id="page-title"]{font-size:32px!important}
+  .layer-row{grid-template-columns:repeat(3,1fr);gap:9px}
+  .eng-row{grid-template-columns:repeat(3,1fr)}
+  .layer-card{min-height:auto}
+  .layer-body{grid-template-columns:1fr;gap:8px;font-size:9.5px;line-height:1.3}
+}
+
+@media (max-width: 980px){
+  .poster{padding:12px 12px 16px}
+  .top-grid{grid-template-columns:1fr;gap:10px}
+  .focus-box{padding:10px}
+  h1[data-template-id="page-title"]{font-size:28px!important;line-height:1.08!important}
+  p[data-template-id="subtitle"]{font-size:12px!important}
+  .row-grid{display:block;margin-top:14px}
+  .side-label{text-align:left;padding:8px 0;margin-bottom:8px;border-top:1px solid var(--line)}
+  .side-label p{font-size:10px;margin-top:2px}
+  .flow-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .flow-arrow{display:none}
+  .flow-card{max-width:none;width:100%;padding:10px 8px}
+  .found-row{grid-template-columns:1fr;gap:10px}
+  .found-body{columns:1;font-size:10.5px;line-height:1.4}
+  .layer-row{grid-template-columns:1fr 1fr;gap:10px}
+  .layer-head{font-size:11px;min-height:36px}
+  .layer-body{grid-template-columns:1fr;font-size:10.5px;line-height:1.4;padding:9px 10px}
+  .eng-row{grid-template-columns:1fr 1fr;gap:10px}
+  .eng-head{font-size:11px;min-height:36px}
+  .eng-body{font-size:10.5px;line-height:1.4}
+  .path-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;overflow:visible}
+  .path-card{min-width:0;max-width:none;width:auto;font-size:10px;padding:8px}
+  .path-card b{font-size:9.5px}
+  .interactive-section{padding:12px;border-radius:0;margin-top:0}
+}
+
+@media (max-width: 640px){
+  body{background:#0f172a}
+  .poster{padding:10px;background:#fff}
+  h1[data-template-id="page-title"]{font-size:24px!important;line-height:1.1!important}
+  p[data-template-id="subtitle"]{font-size:11px!important;line-height:1.3!important}
+  .legend-box, .focus-box{width:100%}
+  .flow-row{grid-template-columns:1fr}
+  .flow-card{display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:left;padding:12px}
+  .flow-card .ico{font-size:24px;line-height:1}
+  .flow-card .name{font-size:12px;margin-top:0}
+  .found-head{font-size:12px;padding:8px 10px}
+  .found-body{font-size:11px;padding:10px 14px}
+  .layer-row,.eng-row,.path-row{grid-template-columns:1fr}
+  .layer-card,.eng-card{min-height:0}
+  .layer-head,.eng-head{font-size:12px;min-height:38px}
+  .layer-body{font-size:11px;line-height:1.45}
+  .eng-body{font-size:11px;line-height:1.45;padding:10px 12px}
+  .priority-badge{font-size:9.5px;padding:4px 8px}
+  .path-card{font-size:11px;padding:10px 12px}
+  .path-card b{font-size:10.5px}
+  .interactive-section{padding:10px}
+  .interactive-section > .flex.items-center.justify-between{align-items:flex-start;gap:10px;flex-direction:column}
+  .w-48{width:100%}
+  .section-toggle{padding:12px 10px!important}
+  .section-toggle .flex.items-center.gap-3{gap:.5rem}
+  .section-content label{padding:9px 6px!important;align-items:flex-start}
+  .section-content span.text-slate-300{font-size:13px;line-height:1.35}
+}
+
+@media (max-width: 380px){
+  h1[data-template-id="page-title"]{font-size:21px!important}
+  .poster{padding:8px}
+  .flow-card .name{font-size:11px}
+  .layer-body,.eng-body,.found-body{font-size:10.5px}
+}
+
+
+/* Standalone utility classes replacing Tailwind for offline use */
+.w-full{width:100%}.min-h-screen{min-height:100vh}
+.flex{display:flex}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-between{justify-content:space-between}
+.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}
+.px-2{padding-left:.5rem;padding-right:.5rem}.px-4{padding-left:1rem;padding-right:1rem}
+.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}
+.pb-3{padding-bottom:.75rem}.pt-2{padding-top:.5rem}.mb-3{margin-bottom:.75rem}
+.space-y-1>*+*{margin-top:.25rem}.space-y-3>*+*{margin-top:.75rem}
+.rounded{border-radius:.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}
+.border{border-width:1px;border-style:solid}.border-t{border-top-width:1px;border-top-style:solid}.border-slate-700{border-color:#334155}
+.overflow-hidden{overflow:hidden}.cursor-pointer{cursor:pointer}.select-none{user-select:none}
+.font-bold{font-weight:700}.font-semibold{font-weight:600}
+.text-lg{font-size:1.125rem}.text-base{font-size:1rem}.text-sm{font-size:.875rem}.text-xs{font-size:.75rem}
+.text-slate-100{color:#f1f5f9}.text-slate-300{color:#cbd5e1}.text-slate-400{color:#94a3b8}.text-emerald-400{color:#34d399}
+.bg-slate-700{background:#334155}.bg-emerald-400{background:#34d399}.bg-emerald-500{background:#10b981}.bg-amber-500{background:#f59e0b}.bg-blue-500{background:#194aa8}.bg-blue-500{background:#94a3b8}
+.w-2{width:.5rem}.h-2{height:.5rem}.w-2\.5{width:.625rem}.h-2\.5{height:.625rem}.w-3{width:.75rem}.h-3{height:.75rem}.w-4{width:1rem}.h-4{height:1rem}.w-20{width:5rem}.w-48{width:12rem}
+.inline-block{display:inline-block}.flex-shrink-0{flex-shrink:0}.accent-emerald-400{accent-color:#34d399}
+.hover\:bg-slate-700\/50:hover{background:rgba(51,65,85,.5)}
+@media (min-width:640px){.sm\:text-base{font-size:1rem}}
+
+/* Desktop protection: keep the original Canva/poster organization on normal full-screen desktops */
+@media (min-width: 1101px){
+  .top-grid{display:grid;grid-template-columns:280px 1fr 170px;gap:16px;align-items:center}
+  .row-grid{display:grid;grid-template-columns:105px 1fr;gap:10px;align-items:start}
+  .flow-row{display:flex;align-items:center;gap:0;flex-wrap:nowrap;justify-content:space-between}
+  .flow-card{max-width:120px;flex:1}
+  .flow-arrow{display:block}
+  .found-row{display:grid;grid-template-columns:1.1fr 1.5fr 1fr;gap:10px}
+  .found-body{columns:2}
+  .layer-row{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+  .layer-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;font-size:9px;line-height:1.25;padding:6px 8px}
+  .layer-card{min-height:210px}
+  .eng-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .path-row{display:flex;align-items:stretch;gap:4px;overflow-x:auto}
+  .path-card{min-width:85px;max-width:85px;font-size:8px;padding:5px 6px}
+}
+
+
+
+/* Final desktop badge fix: preserve Canva-like 7-card layout, but prevent priority labels from being clipped. */
+.layer-card{overflow:hidden;}
+.layer-section{min-width:0;}
+.layer-section .priority-badge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:100%;
+  min-height:22px;
+  padding:3px 2px;
+  font-size:7.4px;
+  line-height:1.05;
+  white-space:normal;
+  text-align:center;
+  overflow:visible;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.layer-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:6px;}
+.layer-body ul{padding-left:10px;}
+.layer-body li{overflow-wrap:break-word;}
+
+@media (min-width: 1101px){
+  .layer-section .priority-badge{font-size:7.2px;padding:3px 2px;min-height:22px;}
+  .layer-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:6px;}
+}
+
+@media (max-width: 1100px){
+  .layer-section .priority-badge{font-size:9px;padding:4px 7px;width:auto;display:inline-flex;}
+}
+
+
+
+/* FINAL READABILITY FIX: never split words in the middle.
+   Text wraps only between words; desktop columns are weighted so long labels fit. */
+.layer-body, .layer-body li, .eng-body li, .found-body li, .path-card, .flow-card, .priority-badge {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+.layer-body li, .eng-body li, .found-body li {
+  white-space: normal !important;
+}
+@media (min-width: 1101px){
+  .layer-body{
+    grid-template-columns:minmax(76px,1.55fr) minmax(50px,1fr) minmax(50px,1fr) !important;
+    gap:5px !important;
+    font-size:8.6px !important;
+    line-height:1.24 !important;
+    padding:6px 7px !important;
+  }
+  .layer-body ul{padding-left:9px !important;}
+  .layer-body li{margin:2px 0 !important;}
+  .layer-section .priority-badge{
+    font-size:7px !important;
+    line-height:1.05 !important;
+    padding:3px 2px !important;
+    letter-spacing:-.1px;
+  }
+}
+@media (max-width: 1100px){
+  .layer-body li, .eng-body li, .found-body li{
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+}
+
+
+/* Final readability fixes: never split words in the poster cards */
+.layer-card, .layer-body, .layer-body li, .found-body li, .eng-body li, .path-card { 
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+.layer-card { overflow: hidden; }
+.layer-section { min-width: 0; }
+.priority-badge { white-space: nowrap; width: max-content; max-width: 100%; }
+
+</style>
+ </head>
+ <body data-template-id="__page-root" class="w-full min-h-screen" style="background: rgb(11, 18, 32);">
+  <div class="poster">
+   <!-- HEADER -->
+   <div class="top-grid">
+    <div style="border:1.5px solid var(--line);border-radius:8px;overflow:hidden">
+     <div style="background:var(--green);color:#fff;font-weight:700;font-size:11.5px;padding:6px 10px;display:flex;align-items:center;gap:6px">
+      📋 LEGEND
+     </div>
+     <div style="padding:8px 12px;font-size:10px;line-height:1.35">
+      <div style="display:flex;align-items:center;gap:6px;margin:4px 0"><span style="width:9px;height:9px;border-radius:50%;background:var(--green);flex-shrink:0"></span><b style="color:var(--green)">MUST LEARN</b><span style="color:#53617f">Essential for job-ready</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin:4px 0"><span style="width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0"></span><b style="color:var(--orange)">SHOULD KNOW</b><span style="color:#53617f">Important / Intermediate</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin:4px 0"><span style="width:9px;height:9px;border-radius:50%;background:var(--blue);flex-shrink:0"></span><b style="color:var(--blue)">NICE TO KNOW</b><span style="color:#53617f">Good to recognize</span>
+      </div>
+     </div>
+    </div>
+    <div style="text-align:center">
+     <h1 data-template-id="page-title" class="canva-text" style="font-size: 38px; margin: 0px; letter-spacing: 0.3px; line-height: 1; color: rgb(12, 35, 99); font-weight: 700; font-style: normal;">DATA ENGINEERING ROADMAP 2026–2027</h1>
+     <p data-template-id="subtitle" class="canva-text" style="font-size: 14px; font-weight: 700; margin: 8px 0px 0px; color: rgb(25, 74, 168); font-style: normal;">PROGRESSIVE LEARNING PIPELINE – JOB-READY IN 12+ MONTHS</p>
+    </div>
+    <div class="focus-box"><span style="font-size:28px">🎯</span>
+     <div>
+      FOCUS 80%
+     </div>
+     <div>
+      JOB-READY
+     </div>
+    </div>
+   </div><!-- 1. BIG PICTURE -->
+   <div class="row-grid">
+    <div class="side-label"><span class="section-num">1</span><br><b>THE BIG<br>
+       PICTURE</b>
+     <p>How a real project is built</p>
+    </div>
+    <div class="flow-row">
+     <div class="flow-card" onclick="scrollToSection('business_requirements')">
+      <div class="ico">
+       📋
+      </div>
+      <div class="name">
+       BUSINESS REQ
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('sources')">
+      <div class="ico">
+       🗄️
+      </div>
+      <div class="name">
+       SOURCES
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('ingestion')">
+      <div class="ico">
+       ⬇️
+      </div>
+      <div class="name">
+       INGESTION
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('storage')">
+      <div class="ico">
+       🪣
+      </div>
+      <div class="name">
+       STORAGE
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('transformation')">
+      <div class="ico">
+       ⚙️
+      </div>
+      <div class="name">
+       TRANSFORM
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('data_quality')">
+      <div class="ico">
+       🛡️
+      </div>
+      <div class="name">
+       QUALITY
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('orchestration')">
+      <div class="ico">
+       🔀
+      </div>
+      <div class="name">
+       ORCHESTRATION
+      </div>
+     </div>
+     <div class="flow-arrow">
+      ➜
+     </div>
+     <div class="flow-card" onclick="scrollToSection('consumption')">
+      <div class="ico">
+       📊
+      </div>
+      <div class="name">
+       CONSUMPTION
+      </div>
+     </div>
+    </div>
+   </div><!-- 2. FOUNDATION -->
+   <div class="row-grid" style="margin-top:12px">
+    <div class="side-label"><span class="section-num">2</span><br><b>FOUNDATION<br>
+       SKILLS</b>
+     <p>Used throughout the entire pipeline</p>
+    </div>
+    <div class="found-row">
+     <div class="found-card" onclick="scrollToSection('sql_foundation')" style="cursor:pointer">
+      <div class="found-head" style="background:var(--green);color:#ffffff;font-weight:700">
+       🗄️ SQL — Universal Data Language
+      </div>
+      <div class="found-body">
+       <ul>
+        <li>SELECT / WHERE / GROUP BY</li>
+        <li>JOINs (INNER, LEFT, FULL)</li>
+        <li>CTEs &amp; Subqueries</li>
+        <li>Window Functions</li>
+        <li>Query Optimization</li>
+        <li>DDL / DML</li>
+        <li>Indexing Strategy</li>
+        <li>Transactions &amp; ACID</li>
+        <li>Views &amp; Materialized Views</li>
+        <li>Analytics Queries</li>
+       </ul>
+      </div>
+     </div>
+     <div class="found-card" onclick="scrollToSection('python_foundation')" style="cursor:pointer">
+      <div class="found-head" style="background:var(--green);color:#ffffff;font-weight:700">
+       🐍 Python — Automation Engine
+      </div>
+      <div class="found-body">
+       <ul>
+        <li>Data structures</li>
+        <li>File I/O (CSV, JSON, Parquet)</li>
+        <li>requests &amp; API handling</li>
+        <li>Virtual environments</li>
+        <li>Error handling &amp; logging</li>
+        <li>OOP for pipelines</li>
+        <li>Type hints &amp; testing</li>
+        <li>Package management</li>
+        <li>pandas / Polars</li>
+        <li>Automation scripts</li>
+       </ul>
+      </div>
+     </div>
+     <div class="found-card" onclick="scrollToSection('data_modeling_foundation')" style="cursor:pointer">
+      <div class="found-head" style="background:var(--green);color:#ffffff;font-weight:700">
+       🧩 Data Modeling — Business Structure
+      </div>
+      <div class="found-body">
+       <ul>
+        <li>OLTP vs OLAP</li>
+        <li>Star / Snowflake Schema</li>
+        <li>Fact &amp; Dimension Tables</li>
+        <li>SCD Types 1, 2, 3</li>
+        <li>Grain &amp; Keys</li>
+        <li>Kimball / Inmon</li>
+        <li>ERD Design</li>
+        <li>Naming Conventions</li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div><!-- 3. PIPELINE LAYERS -->
+   <div class="row-grid" style="margin-top:12px">
+    <div class="side-label"><span class="section-num">3</span><br><b>PIPELINE<br>
+       LAYERS</b>
+     <p>Detailed breakdown</p>
+    </div>
+    <div class="layer-row">
+     <div class="layer-card" onclick="scrollToSection('sources')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--green)">
+       1️⃣ SOURCES
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>REST APIs / JSON</li>
+         <li>Authentication</li>
+         <li>Pagination</li>
+         <li>Rate limits</li>
+         <li>CSV / Excel / Parquet</li>
+         <li>🐘 PostgreSQL / 🐬 MySQL</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>Salesforce</li>
+         <li>SAP / HubSpot</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="layer-card" onclick="scrollToSection('ingestion')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--green)">
+       2️⃣ INGESTION
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>ETL / ELT</li>
+         <li>Batch &amp; Stream</li>
+         <li>CDC</li>
+         <li>Retry logic</li>
+         <li>Incremental loads</li>
+         <li>Error handling</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>Airbyte</li>
+         <li>Fivetran</li>
+         <li>Meltano</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="layer-card" onclick="scrollToSection('storage')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--green)">
+       3️⃣ STORAGE
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>🐘 PostgreSQL / 🪣 S3</li>
+         <li>Partitioning</li>
+         <li>Row vs Columnar</li>
+         <li>Compression</li>
+         <li>Lifecycle policies</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>❄️ Snowflake</li>
+         <li>BigQuery</li>
+         <li>Delta / Iceberg</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="layer-card" onclick="scrollToSection('transformation')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--green)">
+       4️⃣ TRANSFORMATION
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>SQL CTEs / Windows</li>
+         <li>DataFrames</li>
+         <li>🔥 dbt Models &amp; Tests</li>
+         <li>Data cleaning</li>
+         <li>Medallion layers</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>⚡ Spark / PySpark</li>
+         <li>🏢 Databricks</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="layer-card" onclick="scrollToSection('orchestration')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--green)">
+       5️⃣ ORCHESTRATION
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>🌊 Airflow DAGs</li>
+         <li>Scheduling</li>
+         <li>Retries &amp; Alerts</li>
+         <li>Connections</li>
+         <li>Monitoring</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>Dagster</li>
+         <li>Prefect</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="layer-card" onclick="scrollToSection('data_quality')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--green)">
+       6️⃣ DATA QUALITY
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>Null / Duplicate checks</li>
+         <li>Schema validation</li>
+         <li>Business rules</li>
+         <li>🔥 dbt tests</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>Great Expectations</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="layer-card" onclick="scrollToSection('consumption')" style="cursor:pointer">
+      <div class="layer-head" style="background:var(--navy)">
+       📊 CONSUMPTION
+      </div>
+      <div class="layer-body">
+       <div class="layer-section"><span class="priority-badge badge-must">MUST LEARN</span>
+        <ul>
+         <li>SQL analytics</li>
+         <li>Business queries</li>
+        </ul>
+       </div>
+       <div class="layer-section"><span class="priority-badge badge-should">SHOULD KNOW</span>
+        <ul>
+         <li>📊 Power BI</li>
+         <li>📈 Tableau</li>
+         <li>Looker</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- 4. ENGINEERING -->
+   <div class="row-grid" style="margin-top:12px">
+    <div class="side-label"><span class="section-num">4</span><br><b>ENGINEERING<br>
+       LAYER</b>
+     <p>Cross-cutting skills</p>
+    </div>
+    <div class="eng-row">
+     <div class="eng-card" onclick="scrollToSection('devops_git')" style="cursor:pointer">
+      <div class="eng-head" style="background:var(--green)">
+       7️⃣ DEVOPS &amp; GIT
+      </div>
+      <div class="eng-body">
+       <ul>
+        <li>🐙 Git / Branching</li>
+        <li>🐧 Linux / Bash</li>
+        <li>🐳 Docker / Compose</li>
+        <li>CI/CD</li>
+        <li>Kubernetes</li>
+       </ul>
+      </div>
+     </div>
+     <div class="eng-card" onclick="scrollToSection('cloud')" style="cursor:pointer">
+      <div class="eng-head" style="background:var(--green)">
+       8️⃣ CLOUD
+      </div>
+      <div class="eng-body">
+       <ul>
+        <li>☁️ AWS IAM / S3</li>
+        <li>RDS / Lambda</li>
+        <li>CloudWatch</li>
+        <li>Secrets Manager</li>
+        <li>🔷 Azure / 🌐 GCP</li>
+       </ul>
+      </div>
+     </div>
+     <div class="eng-card" onclick="scrollToSection('governance')" style="cursor:pointer">
+      <div class="eng-head" style="background:var(--orange)">
+       9️⃣ GOVERNANCE
+      </div>
+      <div class="eng-body">
+       <ul>
+        <li>Data ownership</li>
+        <li>Data contracts</li>
+        <li>Catalog &amp; Lineage</li>
+        <li>Retention policies</li>
+       </ul>
+      </div>
+     </div>
+     <div class="eng-card" onclick="scrollToSection('observability')" style="cursor:pointer">
+      <div class="eng-head" style="background:var(--orange)">
+       🔟 OBSERVABILITY
+      </div>
+      <div class="eng-body">
+       <ul>
+        <li>Logging &amp; Metrics</li>
+        <li>Alerts &amp; SLAs</li>
+        <li>📡 Grafana / 📉 Datadog</li>
+        <li>OpenTelemetry</li>
+       </ul>
+      </div>
+     </div>
+     <div class="eng-card" onclick="scrollToSection('architecture')" style="cursor:pointer">
+      <div class="eng-head" style="background:var(--orange)">
+       1️⃣1️⃣ ARCHITECTURE
+      </div>
+      <div class="eng-body">
+       <ul>
+        <li>Batch / Incremental</li>
+        <li>Event-driven</li>
+        <li>Lakehouse</li>
+        <li>Modern Data Stack</li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div><!-- 5. LEARNING PATH -->
+   <div class="row-grid" style="margin-top:12px">
+    <div class="side-label"><span class="section-num">5</span><br><b>LEARNING<br>
+       PATH</b>
+     <p>12+ months journey</p>
+    </div>
+    <div class="path-row">
+     <div class="path-card" onclick="scrollToSection('business_requirements')" style="cursor:pointer"><b>0. BUSINESS REQUIREMENTS</b>
+      <ul>
+       <li>Stakeholder mapping</li>
+       <li>Data needs</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('sql_foundation')" style="cursor:pointer"><b>1. FOUNDATION</b>
+      <ul>
+       <li>SQL + Python</li>
+       <li>Modeling basics</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('sources')" style="cursor:pointer"><b>2. SOURCES</b>
+      <ul>
+       <li>APIs &amp; Connectors</li>
+       <li>Files &amp; Data</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('ingestion')" style="cursor:pointer"><b>3. INGESTION</b>
+      <ul>
+       <li>ETL / ELT</li>
+       <li>Batch &amp; CDC</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('storage')" style="cursor:pointer"><b>4. STORAGE</b>
+      <ul>
+       <li>PostgreSQL &amp; S3</li>
+       <li>Partitioning</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('transformation')" style="cursor:pointer"><b style="white-space:nowrap">5. TRANSFORMATION</b>
+      <ul>
+       <li>SQL Advanced</li>
+       <li>dbt &amp; Modeling</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('data_quality')" style="cursor:pointer"><b>6. QUALITY</b>
+      <ul>
+       <li>Data Quality</li>
+       <li>Testing</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('orchestration')" style="cursor:pointer"><b>7. ORCHESTRATION</b>
+      <ul>
+       <li>Airflow</li>
+       <li>Scheduling</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('devops_git')" style="cursor:pointer"><b>8. DEVOPS</b>
+      <ul>
+       <li>Git &amp; Docker</li>
+       <li>CI/CD</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('cloud')" style="cursor:pointer"><b>9. CLOUD</b>
+      <ul>
+       <li>AWS S3 &amp; RDS</li>
+       <li>Secrets</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('governance')" style="cursor:pointer"><b>10. GOVERNANCE</b>
+      <ul>
+       <li>Ownership</li>
+       <li>Contracts</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('observability')" style="cursor:pointer"><b>11. OBSERVABILITY</b>
+      <ul>
+       <li>Monitoring</li>
+       <li>Alerts</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('architecture')" style="cursor:pointer"><b>12. ARCHITECTURE</b>
+      <ul>
+       <li>Patterns</li>
+       <li>Design</li>
+      </ul><span class="path-arrow">➜</span>
+     </div>
+     <div class="path-card" onclick="scrollToSection('consumption')" style="cursor:pointer"><b>13. CONSUMPTION</b>
+      <ul>
+       <li>Analytics</li>
+       <li>BI Tools</li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </div><!-- end poster --> <!-- INTERACTIVE SECTION -->
+  <div class="interactive-section">
+   <div class="flex items-center justify-between px-2 py-2">
+    <h2 data-template-id="interactive-title" class="canva-text font-bold text-slate-100" style="color: rgb(241, 245, 249); font-weight: 700; font-style: normal; font-size: 18px;">INTERACTIVE CHECKLIST — Track Your Progress</h2>
+    <div class="flex items-center gap-3">
+     <div class="w-48 h-3 bg-slate-700 rounded-full overflow-hidden">
+      <div id="overall-bar" class="progress-fill h-full bg-emerald-400 rounded-full" style="width:0%"></div>
+     </div><span id="overall-pct" class="text-emerald-400 font-bold text-lg">0%</span><button onclick="resetProgress()" style="background:#334155;color:#cbd5e1;border:1px solid #475569;border-radius:6px;padding:4px 8px;font-size:12px;cursor:pointer">Reset</button>
+    </div>
+   </div>
+   <div class="flex flex-wrap gap-4 text-xs text-slate-400 px-2 mb-3">
+    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Must Learn (🟢)</span> <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-500 inline-block"></span> Should Learn (🟡)</span> <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-blue-500 inline-block"></span> Nice to Know (⚪)</span>
+   </div>
+   <div id="sections-container" class="space-y-3"></div>
+  </div>
+  <script>
+const SECTIONS=[
+{id:'business_requirements',name:'0. BUSINESS REQUIREMENTS',color:'#16692d',topics:[
+{t:'Understanding business problems',p:'g'},{t:'Defining data needs',p:'g'},{t:'Stakeholder requirements',p:'g'},{t:'Success metrics',p:'g'},{t:'Data accessibility needs',p:'g'},{t:'Compliance requirements',p:'g'},{t:'Data consumers identification',p:'g'},{t:'Functional requirements',p:'g'},{t:'Non-functional requirements',p:'g'}
+]},
+{id:'sql_foundation',name:'1. SQL FOUNDATION · Universal Data Language',color:'#16692d',topics:[
+{t:'SELECT / WHERE / GROUP BY / HAVING',p:'g'},{t:'JOINs (INNER, LEFT, RIGHT, FULL, CROSS)',p:'g'},{t:'CASE expressions',p:'g'},{t:'CTEs (Common Table Expressions)',p:'g'},{t:'Subqueries (correlated & non-correlated)',p:'g'},{t:'Window functions (ROW_NUMBER, RANK, LAG, LEAD, SUM OVER)',p:'g'},{t:'Query optimization & execution plans',p:'g'},{t:'DDL (CREATE, ALTER, DROP)',p:'g'},{t:'DML (INSERT, UPDATE, DELETE, MERGE)',p:'g'},{t:'Indexing strategy',p:'g'},{t:'Transactions & ACID properties',p:'g'},{t:'Views & materialized views',p:'g'},{t:'EXISTS clause',p:'g'},{t:'UNION',p:'g'},{t:'UNION ALL',p:'g'},
+{t:'Temporary Tables',p:'y'},{t:'Reading Execution Plans',p:'y'},{t:'Recursive CTEs',p:'y'},{t:'Pivot / Unpivot',p:'y'},{t:'JSON functions in SQL',p:'y'},
+{t:'Stored Procedures',p:'w'},{t:'User Defined Functions',p:'w'},{t:'Dynamic SQL',p:'w'},{t:'Query hints & advanced tuning',p:'w'},{t:'Cross-database Optimization',p:'w'},{t:'SQL dialect differences (PostgreSQL vs Snowflake vs BigQuery)',p:'w'}
+]},
+{id:'python_foundation',name:'2. PYTHON FOUNDATION · Automation Engine',color:'#16692d',topics:[
+{t:'Data structures (lists, dicts, sets, tuples)',p:'g'},{t:'List/dict comprehensions',p:'g'},{t:'File I/O (CSV, JSON, Parquet)',p:'g'},{t:'requests library & API handling',p:'g'},{t:'Error handling (try/except/finally)',p:'g'},{t:'Logging module',p:'g'},{t:'Virtual environments (venv, poetry)',p:'g'},{t:'OOP for pipeline design',p:'g'},{t:'Type hints & annotations',p:'g'},{t:'Unit testing (pytest)',p:'g'},{t:'Package management (pip, pyproject.toml)',p:'g'},{t:'Context managers',p:'g'},
+{t:'pathlib',p:'y'},{t:'argparse',p:'y'},{t:'PyArrow',p:'y'},{t:'Pydantic',p:'y'},{t:'Decorators & generators',p:'y'},{t:'Dataclasses & Pydantic',p:'y'},
+{t:'Async / Await',p:'w'},{t:'Generators',p:'w'},{t:'Decorators',p:'w'},{t:'Metaclasses & advanced patterns',p:'w'},{t:'C extensions & performance',p:'w'}
+]},
+{id:'data_modeling_foundation',name:'3. DATA MODELING FOUNDATION · Business Structure',color:'#16692d',topics:[
+{t:'OLTP vs OLAP concepts',p:'g'},{t:'Star schema basics',p:'g'},{t:'Snowflake schema basics',p:'g'},{t:'Fact tables concepts',p:'g'},{t:'Dimension tables concepts',p:'g'},{t:'SCD (Slowly Changing Dimensions) Types 1, 2, 3',p:'g'},{t:'Grain & keys concepts',p:'g'},{t:'Normalization fundamentals',p:'g'},{t:'Surrogate Keys',p:'g'},{t:'Natural Keys',p:'g'},
+{t:'Degenerate Dimensions',p:'y'},{t:'Kimball vs Inmon overview',p:'y'},
+{t:'Data Vault 2.0 introduction',p:'w'},{t:'Anchor modeling',p:'w'},{t:'Advanced patterns',p:'w'}
+]},
+{id:'sources',name:'4. SOURCES',color:'#16692d',topics:[
+{t:'REST APIs fundamentals',p:'g'},{t:'JSON format',p:'g'},{t:'Authentication (API Key, OAuth2, Bearer Token)',p:'g'},{t:'Pagination strategies',p:'g'},{t:'Rate limits handling',p:'g'},{t:'Error responses handling',p:'g'},{t:'CSV extraction',p:'g'},{t:'Excel extraction',p:'g'},{t:'Parquet files',p:'g'},{t:'XML parsing',p:'g'},{t:'PostgreSQL source connection',p:'g'},{t:'MySQL source connection',p:'g'},{t:'SQL Server source connection',p:'g'},
+{t:'Salesforce APIs',p:'y'},{t:'SAP integration',p:'y'},{t:'HubSpot APIs',p:'y'},{t:'ServiceNow integration',p:'y'},{t:'GraphQL APIs',p:'y'},
+{t:'Kafka source',p:'w'},{t:'Event streams',p:'w'},{t:'IoT data feeds',p:'w'}
+]},
+{id:'ingestion',name:'5. INGESTION',color:'#16692d',topics:[
+{t:'requests library usage',p:'g'},{t:'API calls (GET, POST)',p:'g'},{t:'Authentication token management',p:'g'},{t:'Pagination handling',p:'g'},{t:'Rate limit handling',p:'g'},{t:'Retry logic implementation',p:'g'},{t:'Ingestion logging & tracking',p:'g'},{t:'Extract pattern',p:'g'},{t:'Transform pattern',p:'g'},{t:'Load pattern',p:'g'},{t:'Batch processing',p:'g'},{t:'Incremental loads',p:'g'},{t:'Full load vs incremental',p:'g'},{t:'CDC (Change Data Capture)',p:'g'},{t:'Error handling in ingestion',p:'g'},{t:'Idempotency',p:'g'},{t:'Pipeline Restart Strategy',p:'g'},
+{t:'Airbyte platform',p:'y'},{t:'Fivetran connectors',p:'y'},{t:'Meltano configuration',p:'y'},{t:'Secrets Management',p:'y'},{t:'Configuration Files',p:'y'},
+{t:'Informatica platform',p:'w'},{t:'Talend integration',p:'w'},{t:'SSIS pipelines',p:'w'},{t:'Message Queues',p:'w'},{t:'Webhooks',p:'w'}
+]},
+{id:'storage',name:'6. STORAGE',color:'#16692d',topics:[
+{t:'PostgreSQL architecture',p:'g'},{t:'Table design',p:'g'},{t:'Index strategies',p:'g'},{t:'View creation',p:'g'},{t:'Transaction management',p:'g'},{t:'Partitioning design',p:'g'},{t:'AWS S3 basics',p:'g'},{t:'S3 buckets setup',p:'g'},{t:'S3 objects & keys',p:'g'},{t:'S3 prefixes & structure',p:'g'},{t:'S3 lifecycle policies',p:'g'},{t:'Row vs Columnar formats',p:'g'},{t:'Compression formats',p:'g'},{t:'Data layout optimization',p:'g'},{t:'Serialization formats',p:'g'},{t:'Parquet Internals',p:'g'},{t:'Avro Fundamentals',p:'g'},
+{t:'Snowflake architecture',p:'y'},{t:'BigQuery setup',p:'y'},{t:'Redshift clusters',p:'y'},{t:'Synapse analytics',p:'y'},{t:'Delta Lake format',p:'y'},{t:'Iceberg format',p:'y'},{t:'Hudi format',p:'y'},{t:'Partition Pruning',p:'y'},{t:'Apache Arrow',p:'y'},{t:'ORC format',p:'y'},
+{t:'MinIO',p:'w'},{t:'Hive Metastore',p:'w'},{t:'Snappy compression',p:'w'},{t:'Gzip compression',p:'w'},{t:'ZSTD compression',p:'w'}
+]},
+{id:'transformation',name:'7. TRANSFORMATION',color:'#16692d',topics:[
+{t:'SQL applied: Window functions for metrics',p:'g'},{t:'SQL applied: CTEs for layered logic',p:'g'},{t:'SQL applied: MERGE for upserts',p:'g'},{t:'DataFrames with Pandas',p:'g'},{t:'DataFrame merge & join',p:'g'},{t:'GroupBy operations',p:'g'},{t:'Aggregation functions',p:'g'},{t:'Missing values handling',p:'g'},{t:'Time series transformations',p:'g'},{t:'Data cleaning techniques',p:'g'},{t:'dbt model structure',p:'g'},{t:'dbt sources',p:'g'},{t:'dbt tests & assertions',p:'g'},{t:'dbt documentation',p:'g'},{t:'dbt incremental models',p:'g'},{t:'Polars',p:'g'},
+{t:'Apache Spark fundamentals',p:'y'},{t:'PySpark programming',p:'y'},{t:'Databricks notebooks',p:'y'},
+{t:'Apache Flink basics',p:'w'},{t:'Apache Beam overview',p:'w'},{t:'DuckDB',p:'w'}
+]},
+{id:'data_quality',name:'8. DATA QUALITY',color:'#16692d',topics:[
+{t:'Null value detection',p:'g'},{t:'Duplicate detection',p:'g'},{t:'Schema validation',p:'g'},{t:'Business rules testing',p:'g'},{t:'dbt testing framework',p:'g'},{t:'Referential Integrity',p:'g'},
+{t:'Great Expectations library',p:'y'},{t:'Unit tests',p:'y'},{t:'Integration tests',p:'y'},{t:'End-to-end pipeline tests',p:'y'},
+{t:'Soda monitoring',p:'w'},{t:'Monte Carlo anomaly detection',p:'w'}
+]},
+{id:'orchestration',name:'9. ORCHESTRATION',color:'#16692d',topics:[
+{t:'DAG (Directed Acyclic Graph) concepts',p:'g'},{t:'Task definition',p:'g'},{t:'Scheduling & triggers',p:'g'},{t:'Retry & error handling',p:'g'},{t:'Connection management',p:'g'},{t:'Workflow monitoring',p:'g'},{t:'Backfills',p:'g'},
+{t:'Dagster workflows',p:'y'},{t:'Prefect flows',p:'y'},
+{t:'Event Triggers',p:'w'}
+]},
+{id:'devops_git',name:'10. DEVOPS & GIT',color:'#16692d',topics:[
+{t:'Git branching strategies',p:'g'},{t:'Merge & rebase',p:'g'},{t:'Pull request workflow',p:'g'},{t:'Version control practices',p:'g'},{t:'Bash scripting',p:'g'},{t:'Linux permissions',p:'g'},{t:'Cron jobs',p:'g'},{t:'Environment variables',p:'g'},{t:'Docker image creation',p:'g'},{t:'Docker containers',p:'g'},{t:'Dockerfile syntax',p:'g'},{t:'Docker Compose',p:'g'},{t:'SSH',p:'g'},{t:'Linux Processes',p:'g'},
+{t:'GitHub Actions CI/CD',p:'y'},{t:'GitLab CI pipelines',p:'y'},
+{t:'Kubernetes clusters',p:'w'},{t:'Terraform infrastructure',p:'w'},{t:'Helm',p:'w'},{t:'ArgoCD',p:'w'}
+]},
+{id:'cloud',name:'11. CLOUD',color:'#16692d',topics:[
+{t:'AWS IAM access control',p:'g'},{t:'AWS S3 service',p:'g'},{t:'RDS databases',p:'g'},{t:'Lambda functions',p:'g'},{t:'CloudWatch monitoring',p:'g'},{t:'AWS Secrets Manager',p:'g'},
+{t:'Google Cloud Platform',p:'y'},{t:'Microsoft Azure services',p:'y'},{t:'AWS Glue',p:'y'},{t:'Amazon Athena',p:'y'},{t:'EMR',p:'y'},
+{t:'Kinesis',p:'w'},{t:'Redshift Serverless',p:'w'},{t:'AWS Batch',p:'w'},{t:'ECS',p:'w'},{t:'EKS',p:'w'}
+]},
+{id:'governance',name:'12. DATA GOVERNANCE',color:'#f97316',topics:[
+{t:'Data ownership assignment',p:'g'},{t:'Data contracts definition',p:'g'},{t:'Data classification',p:'g'},{t:'Retention policy',p:'g'},
+{t:'Data catalog implementation',p:'y'},{t:'Metadata management',p:'y'},{t:'Data lineage tracking',p:'y'},{t:'Personally Identifiable Information (PII)',p:'y'},{t:'GDPR Awareness',p:'y'},
+{t:'Encryption at Rest',p:'w'},{t:'Encryption in Transit',p:'w'},{t:'Least Privilege Principle',p:'w'},{t:'Schema Registry',p:'w'}
+]},
+{id:'observability',name:'13. OBSERVABILITY',color:'#f97316',topics:[
+{t:'Structured Logging',p:'g'},{t:'Metrics collection',p:'g'},{t:'Alert configuration',p:'g'},{t:'SLA definition',p:'g'},
+{t:'Grafana dashboards',p:'y'},{t:'Datadog monitoring',p:'y'},
+{t:'OpenTelemetry instrumentation',p:'w'},{t:'ELK Stack setup',p:'w'},{t:'Distributed Tracing',p:'w'},{t:'Prometheus',p:'w'}
+]},
+{id:'architecture',name:'14. ARCHITECTURE PATTERNS',color:'#f97316',topics:[
+{t:'Batch processing patterns',p:'g'},{t:'Incremental processing',p:'g'},{t:'Event-driven architecture',p:'g'},{t:'Micro-batching approach',p:'g'},{t:'Medallion Architecture',p:'g'},
+{t:'Lambda architecture',p:'y'},{t:'Lakehouse architecture',p:'y'},{t:'Modern Data Stack',p:'y'},{t:'Data Mesh',p:'y'},
+{t:'Kappa Architecture',p:'w'},{t:'CQRS',p:'w'},{t:'Event Sourcing',p:'w'}
+]},
+{id:'consumption',name:'15. CONSUMPTION',color:'#0b2871',topics:[
+{t:'SQL for analytics queries',p:'g'},{t:'Business intelligence queries',p:'g'},
+{t:'Power BI dashboards',p:'y'},{t:'Tableau visualizations',p:'y'},{t:'Looker reporting',p:'y'},{t:'Semantic models',p:'y'},
+{t:'Machine Learning pipelines',p:'w'},{t:'GenAI applications',p:'w'},{t:'RAG systems',p:'w'},{t:'Vector databases',p:'w'},{t:'Real-time streaming analytics',p:'w'},{t:'Semantic Layer',p:'w'},{t:'Data APIs',p:'w'}
+]}
+];
+
+const NAVIGATION_MAP={
+'business_requirements':'business_requirements',
+'sql_foundation':'sql_foundation',
+'python_foundation':'python_foundation',
+'data_modeling_foundation':'data_modeling_foundation',
+'sources':'sources',
+'ingestion':'ingestion',
+'storage':'storage',
+'transformation':'transformation',
+'data_quality':'data_quality',
+'orchestration':'orchestration',
+'devops_git':'devops_git',
+'cloud':'cloud',
+'governance':'governance',
+'observability':'observability',
+'architecture':'architecture',
+'consumption':'consumption'
+};
+
+const PRIORITY_COLORS={g:'#10b981',y:'#f59e0b',w:'#194aa8'};
+const ALL_TOPICS=[];
+SECTIONS.forEach(s=>s.topics.forEach(t=>ALL_TOPICS.push(s.id+'::'+t.t)));
+
+let completionMap={};
+let records=[];
+
+function renderSections(){
+const container=document.getElementById('sections-container');
+if(container.children.length===0){
+SECTIONS.forEach(section=>{
+const div=document.createElement('div');
+div.className='rounded-lg border border-slate-700 overflow-hidden';
+div.dataset.sectionId=section.id;
+div.id='sec-'+section.id;
+div.innerHTML=`
+<div class="section-toggle flex items-center justify-between px-4 py-3 cursor-pointer select-none" onclick="toggleSection('${section.id}')" style="background-color:${section.color}1a;border-bottom:1px solid ${section.color}40">
+<span class="font-semibold text-slate-100 flex items-center gap-2 text-sm sm:text-base">
+<span class="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style="background:${section.color}"></span>
+${section.name}
+</span>
+<div class="flex items-center gap-3">
+<span class="text-xs text-slate-400 section-pct">0/${section.topics.length}</span>
+<div class="w-20 h-2 bg-slate-600 rounded-full overflow-hidden"><div class="progress-fill h-full rounded-full" style="width:0%;background:${section.color}"></div></div>
+<span class="chevron-icon" style="width:16px;height:16px;color:#94a3b8;display:inline-flex;align-items:center;justify-content:center">⌄</span>
+</div>
+</div>
+<div class="section-content" id="content-${section.id}">
+<div class="px-4 pb-3 space-y-1 border-t pt-2" style="border-color:${section.color}40;background-color:${section.color}08">
+${section.topics.map(tp=>{
+const tid=section.id+'::'+tp.t;
+return `<label class="flex items-center gap-3 py-1.5 px-2 rounded hover:bg-slate-700/50 cursor-pointer">
+<input type="checkbox" class="w-4 h-4 accent-emerald-400 flex-shrink-0" data-topic="${tid}" onchange="toggleTopic('${tid.replace(/'/g,"\\'")}',this.checked)">
+<span class="w-2 h-2 rounded-full flex-shrink-0" style="background:${PRIORITY_COLORS[tp.p]}"></span>
+<span class="text-slate-300 text-sm">${tp.t}</span>
+</label>`;
+}).join('')}
+</div>
+</div>`;
+container.appendChild(div);
+});
+
+}
+document.querySelectorAll('input[data-topic]').forEach(cb=>{
+cb.checked=!!completionMap[cb.dataset.topic];
+});
+updateProgress();
+}
+
+function updateProgress(){
+const total=ALL_TOPICS.length;
+const done=ALL_TOPICS.filter(t=>completionMap[t]).length;
+document.getElementById('overall-bar').style.width=(done/total*100)+'%';
+document.getElementById('overall-pct').textContent=Math.round(done/total*100)+'%';
+SECTIONS.forEach(section=>{
+const el=document.querySelector(`[data-section-id="${section.id}"]`);
+if(!el)return;
+const sDone=section.topics.filter(t=>completionMap[section.id+'::'+t.t]).length;
+el.querySelector('.section-pct').textContent=`${sDone}/${section.topics.length}`;
+el.querySelector('.progress-fill').style.width=(sDone/section.topics.length*100)+'%';
+});
+}
+
+function toggleSection(id){
+const content=document.getElementById('content-'+id);
+content.classList.toggle('open');
+content.closest('[data-section-id]').querySelector('.section-toggle').classList.toggle('section-open');
+}
+
+function scrollToSection(id){
+const mappedId=NAVIGATION_MAP[id]||id;
+const el=document.getElementById('sec-'+mappedId);
+if(el){el.scrollIntoView({behavior:'smooth',block:'start'});toggleSection(mappedId);}
+}
+
+function saveProgress(){
+localStorage.setItem('deKnowledgeMapProgress', JSON.stringify(completionMap));
+}
+
+function loadProgress(){
+try{
+completionMap = JSON.parse(localStorage.getItem('deKnowledgeMapProgress') || '{}');
+}catch(e){
+completionMap = {};
+}
+}
+
+function toggleTopic(topicId,checked){
+if(checked){
+completionMap[topicId]=true;
+}else{
+delete completionMap[topicId];
+}
+saveProgress();
+updateProgress();
+}
+
+function resetProgress(){
+if(confirm('Reset all checklist progress?')){
+completionMap={};
+saveProgress();
+renderSections();
+}
+}
+
+loadProgress();
+renderSections();
+</script>
+
+  <footer style="max-width:1600px;margin:12px auto 0;padding:10px 18px;color:#94a3b8;font-size:12px;text-align:center">
+    Data Engineering Knowledge Map v1.0 · Curriculum architecture designed by Ben Carter · Interface prepared as a standalone HTML learning file.
+  </footer>
+
+</body></html>
